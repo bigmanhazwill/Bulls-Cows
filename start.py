@@ -4,17 +4,15 @@ class Game:
     Making the game
     """
 
-    def start(self):
+    def start(self, p1, p2, code):
         """
         Begins the game ready for playing
         """
         self.guess_count = 0
         self.guessed = False
-        self.player_1 = input('Who is going to be creating the key? (name) ')
-        self.player_2 = input('Who is going to be guessing? (name) ')
-        self.chosen_code = input(self.player_1 + ' please enter your secret key.\n')
-        
-        
+        self.player_1 = p1
+        self.player_2 = p2
+        self.chosen_code = code
 
     def __init__(self):
         """
@@ -44,7 +42,13 @@ class Game:
 
 if __name__ == "__main__":
     g = Game()
-    g.start()
+    p1 = input('Who is going to be creating the key? (name) ')
+    p2 = input('Who is going to be guessing? (name) ')
+    code = input(p1 + ' please enter your secret key.\n')
+    g.start(p1, p2, code)
+
     while not g.guessed:
         g.guessed = g.guess()
+
     print('\nCongratulations {0} you guessed the key correctly in {1} guesses, it was: {2}\n'.format(g.player_2, g.guess_count, g.chosen_code) )
+    
